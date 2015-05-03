@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="./lib/jquery.js"></script>
+		<script type="text/javascript" src="./js/2048.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/2048.css"/>
+		<script type="text/javascript">
+            var arrayOrigData = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]; //全局数字数组与界面上矩阵上的数字一一对应。
+            var bHasMove = false; //是否需要创建新数字【当值为false，没有移动，这是就不需要创建新数字】
+            $(window).keydown(function(event){
+                bHasMove = false;
+                switch(event.keyCode) {
+                    case 37: 
+                        MoveLeft();
+                        if(bHasMove){
+                            CreatNum();
+                        }
+                        break;
+            　 　 　 case 38:
+                        MoveUp();
+                        if(bHasMove){
+                            CreatNum();
+                        }
+                        break;
+            　 　 　 case 39: 
+                        MoveRigth();
+                        if(bHasMove){
+                            CreatNum();
+                        }
+                        break;
+           　 　　   case 40:
+                        MoveDown();
+                        if(bHasMove){
+                            CreatNum();
+                        }
+                        break;
+                }
+                var bIsGameOver = CheckGameOver();
+                if(bIsGameOver){
+                    alert("游戏结束！");
+                }
+            });
+            $(document).ready(function (){
+                CreatNum();
+            });
+        </script>
+		<title>2048</title>
+	</head>
+
+	<body>
+		<div class="gameContainer">
+			<div class="gameRow">
+                <div id="data00" class="gameCell"></div>
+                <div id="data01" class="gameCell"></div>
+                <div id="data02" class="gameCell"></div>
+                <div id="data03" class="gameCell"></div>
+			</div>
+			<div class="gameRow">
+				<div id="data10" class="gameCell"></div>
+				<div id="data11" class="gameCell"></div>
+				<div id="data12" class="gameCell"></div>
+				<div id="data13" class="gameCell"></div>
+			</div>
+			<div class="gameRow">
+				<div id="data20" class="gameCell"></div>
+				<div id="data21" class="gameCell"></div>
+				<div id="data22" class="gameCell"></div>
+				<div id="data23" class="gameCell"></div>
+			</div>
+			<div class="gameRow">
+				<div id="data30" class="gameCell"></div>
+				<div id="data31" class="gameCell"></div>
+				<div id="data32" class="gameCell"></div>
+				<div id="data33" class="gameCell"></div>
+			</div>
+		</div>
+	</body>
+</html>
